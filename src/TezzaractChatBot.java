@@ -35,7 +35,7 @@ public class TezzaractChatBot extends JFrame implements ActionListener {
         // Load memory
         faq = loadMemory(resolveMemoryPath());
 
-        // ===== HEADER (centered, 2 lines) =====
+        // ===== HEADER (centered) =====
         JPanel header = new JPanel(new GridLayout(2, 1));
         header.setBackground(BG);
         header.setBorder(new EmptyBorder(20, 10, 10, 10));
@@ -77,7 +77,7 @@ public class TezzaractChatBot extends JFrame implements ActionListener {
 
         add(center, BorderLayout.CENTER);
 
-        // ===== INPUT BAR (full width) =====
+        // ===== INPUT BAR =====
         JPanel inputBar = new JPanel(new BorderLayout(10, 10));
         inputBar.setBorder(new EmptyBorder(14, 18, 18, 18));
         inputBar.setBackground(BG);
@@ -244,7 +244,7 @@ private Map<String, String> loadMemory(String path) {
         return bubble;
     }
 
-    // ✅ FIXED: Emojis + newlines render correctly
+    // Emojis + newlines 
     private static String toHtmlWrapped(String text, int widthPx) {
         // Escape only HTML-sensitive chars
         String esc = text.replace("&", "&amp;")
@@ -281,7 +281,7 @@ private Map<String, String> loadMemory(String path) {
         return "🤔 Sorry, I don’t have an answer for that yet.\nTry asking me something about VSB College.";
     }
 
-    // Fonts (emoji-friendly if available)
+    // Fonts 
     private static Font pickFont(int style, int size) {
         String[] candidates = {"Segoe UI", "Inter", "Roboto", "Arial", "SansSerif"};
         for (String name : candidates) {
@@ -292,15 +292,16 @@ private Map<String, String> loadMemory(String path) {
     }
 
     private static Font pickEmojiFont(int size) {
-        // Prefer Segoe UI Emoji on Windows for proper emoji rendering
+        // Segoe UI Emoji
         Font f = new Font("Segoe UI Emoji", Font.PLAIN, size);
         if (f.getFamily().equals("Segoe UI Emoji")) return f;
         return pickFont(Font.PLAIN, size);
     }
 
     public static void main(String[] args) {
-        // Native look for better spacing/metrics
+        // Native look 
         try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); } catch (Exception ignored) {}
         SwingUtilities.invokeLater(() -> new TezzaractChatBot().setVisible(true));
     }
 }
+
